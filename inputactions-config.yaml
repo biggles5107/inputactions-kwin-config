@@ -1,0 +1,62 @@
+# link to ~/.config/inputactions/config.yaml
+
+touchpad:
+  gestures:
+
+    # Alt+Tab gesture
+    - type: swipe
+      fingers: 3
+      direction: left_right
+      id: alt_tab
+
+      actions:
+        
+        # Begin holding Alt at beginning of stroke so that switcher stays open during entire gesture
+        - on: begin
+          input: 
+            - keyboard: [ +leftalt ]
+
+        # Right swipe to cycle forward in switcher. Keep moving to continue cycling
+        - on: update
+          interval: 70
+          input:
+            - keyboard: [ tab ]
+
+        # Left swipe to cycle backward in switcher. Also works when changing directions in middle of stroke
+        - on: update
+          interval: -70
+          input:
+            - keyboard: [ leftshift+tab ]
+
+        # Lift the Alt key when you lift your fingers so that the switcher closes
+        - on: end_cancel
+          input:
+            - keyboard: [ -leftalt ]
+
+    # 3 finger swipe up to show overview
+    - type: swipe
+      fingers: 3
+      direction: up
+      id: show_overview
+
+      actions:
+        - on: begin
+          plasma_shortcut: kwin,Overview
+
+    # 3 finger swipe down to show desktop or hide overview
+    - type: swipe
+      fingers: 3
+      direction: down
+      id: show_desktop
+
+      actions:
+        - on: begin
+          one:
+
+            # Hide the overview if it is active
+            - plasma_shortcut: kwin,Overview
+              conditions:
+                - $plasma_overview_active == true
+
+            # Otherwise, show the desktop (or restore windows)
+            - plasma_shortcut: kwin,Show Desktop
