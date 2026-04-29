@@ -25,7 +25,7 @@ Show the overview by swiping up with 3 fingers. Swipe down to close the overview
 
 Swipe down with 3 fingers to show the desktop. Swipe down again to show your windows.
 
-**NOTE:** Swiping up while showing the desktop will open the overview rather than restoring your windows. InputActions does not expose a variable that detects when "Show Desktop" is active, and I have not found a reliable way to detect this otherwise. InputActions also lacks the ability to set custom variables during runtime. There is probably a way to do this using a shell command, but I've honestly been too lazy to figure it out.
+**NOTE: Swiping up while showing the desktop will open the overview rather than restoring your windows.** InputActions does not expose a variable that detects when "Show Desktop" is active, and I have not found a reliable way to detect this otherwise. InputActions also lacks the ability to set custom variables during runtime. There is probably a way to do this using a shell command, but I've honestly been too lazy to figure it out.
 
 ## Issues
 
